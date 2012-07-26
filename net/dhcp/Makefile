@@ -77,7 +77,7 @@ CONFIGURE_ARGS += \
 	--disable-dependency-tracking	\
 	ac_cv_file__dev_random=yes
 
-ifeq ($(CONFIG_DHCP4_ENABLE_IPV6),y)
+ifeq ($(CONFIG_IPV6),y)
   CONFIGURE_ARGS += --enable-dhcpv6
 else
   CONFIGURE_ARGS += --disable-dhcpv6
@@ -104,7 +104,7 @@ define Package/dhcp-server/install
 	$(INSTALL_BIN) $(PKG_INSTALL_DIR)/usr/sbin/dhcpd $(1)/usr/sbin/
 	$(INSTALL_BIN) ./files/dhcpd.init $(1)/etc/init.d/dhcpd
 	$(INSTALL_BIN) ./files/dhcpd.conf $(1)/etc
-ifeq ($(CONFIG_DHCP4_ENABLE_IPV6),y)
+ifeq ($(CONFIG_IPV6),y)
 	$(INSTALL_BIN) ./files/dhcpd6.init $(1)/etc/init.d/dhcpd6
 	$(INSTALL_BIN) ./files/dhcpd6.conf $(1)/etc
 endif
@@ -115,7 +115,7 @@ define Package/dhcp-client/install
 	$(INSTALL_BIN) $(PKG_INSTALL_DIR)/usr/sbin/dhclient $(1)/usr/sbin/
 	$(INSTALL_BIN) ./files/dhclient-script $(1)/usr/sbin/
 	$(INSTALL_BIN) ./files/dhclient.init $(1)/etc/init.d/dhclient
-ifeq ($(CONFIG_DHCP4_ENABLE_IPV6),y)
+ifeq ($(CONFIG_IPV6),y)
 	$(INSTALL_BIN) ./files/dhclient6.init $(1)/etc/init.d/dhclient6
 	$(INSTALL_BIN) ./files/dhclient6.conf $(1)/etc
 endif
