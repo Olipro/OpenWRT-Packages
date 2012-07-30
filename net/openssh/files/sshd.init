@@ -7,7 +7,7 @@ STOP=50
 SERVICE_USE_PID=1
 
 start() {
-	for type in rsa dsa; do {
+	for type in rsa dsa ecdsa; do {
 		# check for keys
 		key=/etc/ssh/ssh_host_${type}_key
 		[ ! -f $key ] && {
