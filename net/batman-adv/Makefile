@@ -10,11 +10,11 @@ include $(TOPDIR)/rules.mk
 
 PKG_NAME:=batman-adv
 
-PKG_VERSION:=2012.3.0
-BATCTL_VERSION:=2012.3.0
-PKG_RELEASE:=3
-PKG_MD5SUM:=9f2d0bb2792fe0db012203d502e2085c
-BATCTL_MD5SUM:=fe9e6a3994539037b48afc5e3d31628c
+PKG_VERSION:=2012.4.0
+BATCTL_VERSION:=2012.4.0
+PKG_RELEASE:=2
+PKG_MD5SUM:=24e922a64a507b146c32c585538407f2
+BATCTL_MD5SUM:=79d5aa796ae8b008a9fa42c27d4da2c1
 
 PKG_SOURCE:=$(PKG_NAME)-$(PKG_VERSION).tar.gz
 PKG_SOURCE_URL:=http://downloads.open-mesh.org/batman/releases/batman-adv-$(PKG_VERSION)
@@ -109,10 +109,11 @@ define Build/Clean
 endef
 
 define KernelPackage/batman-adv/install
-	$(INSTALL_DIR) $(1)/etc/config $(1)/etc/hotplug.d/net $(1)/lib/batman-adv $(1)/usr/sbin
+	$(INSTALL_DIR) $(1)/etc/config $(1)/etc/hotplug.d/net $(1)/etc/hotplug.d/iface $(1)/lib/batman-adv $(1)/usr/sbin
 	$(INSTALL_DATA) ./files/etc/config/batman-adv $(1)/etc/config
 	$(INSTALL_DATA) ./files/lib/batman-adv/config.sh $(1)/lib/batman-adv
 	$(INSTALL_BIN) ./files/etc/hotplug.d/net/99-batman-adv $(1)/etc/hotplug.d/net
+	$(INSTALL_BIN) ./files/etc/hotplug.d/iface/99-batman-adv $(1)/etc/hotplug.d/iface
 	$(INSTALL_BIN) ./files/usr/sbin/batman-adv $(1)/usr/sbin
 	$(BATCTL_INSTALL)
 endef
