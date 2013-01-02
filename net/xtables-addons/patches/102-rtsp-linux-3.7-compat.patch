@@ -1,6 +1,8 @@
---- xtables-addons-2.0/extensions/rtsp/nf_conntrack_rtsp.c~	2012-12-20 00:08:48.000000000 +0000
-+++ xtables-addons-2.0/extensions/rtsp/nf_conntrack_rtsp.c	2012-12-20 00:19:14.065730169 +0000
-@@ -73,7 +73,7 @@ static DEFINE_SPINLOCK(rtsp_buffer_lock)
+Index: xtables-addons-2.1/extensions/rtsp/nf_conntrack_rtsp.c
+===================================================================
+--- xtables-addons-2.1.orig/extensions/rtsp/nf_conntrack_rtsp.c
++++ xtables-addons-2.1/extensions/rtsp/nf_conntrack_rtsp.c
+@@ -72,7 +72,7 @@ static DEFINE_SPINLOCK(rtsp_buffer_lock)
  static struct nf_conntrack_expect_policy rtsp_exp_policy; 
  
  unsigned int (*nf_nat_rtsp_hook)(struct sk_buff *skb,
@@ -9,7 +11,7 @@
  				 unsigned int matchoff, unsigned int matchlen,struct ip_ct_rtsp_expect* prtspexp,
  				 struct nf_conntrack_expect *exp);
  void (*nf_nat_rtsp_hook_expectfn)(struct nf_conn *ct, struct nf_conntrack_expect *exp);
-@@ -269,7 +269,7 @@ void expected(struct nf_conn *ct, struct
+@@ -268,7 +268,7 @@ void expected(struct nf_conn *ct, struct
  
  static inline int
  help_out(struct sk_buff *skb, unsigned char *rb_ptr, unsigned int datalen,
@@ -18,7 +20,7 @@
  {
  	struct ip_ct_rtsp_expect expinfo;
  	
-@@ -353,7 +353,7 @@ help_out(struct sk_buff *skb, unsigned c
+@@ -352,7 +352,7 @@ help_out(struct sk_buff *skb, unsigned c
  		nf_nat_rtsp = rcu_dereference(nf_nat_rtsp_hook);
  		if (nf_nat_rtsp && ct->status & IPS_NAT_MASK)
  			/* pass the request off to the nat helper */
@@ -27,7 +29,7 @@
  		else if (nf_ct_expect_related(exp) != 0) {
  			pr_info("nf_conntrack_expect_related failed\n");
  			ret  = NF_DROP;
-@@ -420,7 +420,7 @@ static int help(struct sk_buff *skb, uns
+@@ -419,7 +419,7 @@ static int help(struct sk_buff *skb, uns
  
  	switch (CTINFO2DIR(ctinfo)) {
  	case IP_CT_DIR_ORIGINAL:
@@ -36,8 +38,10 @@
  		break;
  	case IP_CT_DIR_REPLY:
  		pr_debug("IP_CT_DIR_REPLY\n");
---- xtables-addons-2.0/extensions/rtsp/nf_conntrack_rtsp.h~	2012-12-20 00:08:48.000000000 +0000
-+++ xtables-addons-2.0/extensions/rtsp/nf_conntrack_rtsp.h	2012-12-20 00:16:50.868733345 +0000
+Index: xtables-addons-2.1/extensions/rtsp/nf_conntrack_rtsp.h
+===================================================================
+--- xtables-addons-2.1.orig/extensions/rtsp/nf_conntrack_rtsp.h
++++ xtables-addons-2.1/extensions/rtsp/nf_conntrack_rtsp.h
 @@ -50,6 +50,7 @@ struct ip_ct_rtsp_expect
  
  extern unsigned int (*nf_nat_rtsp_hook)(struct sk_buff *skb,
@@ -46,9 +50,11 @@
  				 unsigned int matchoff, unsigned int matchlen,
  				 struct ip_ct_rtsp_expect *prtspexp,
  				 struct nf_conntrack_expect *exp);
---- xtables-addons-2.0/extensions/rtsp/nf_nat_rtsp.c~	2012-12-20 00:08:48.000000000 +0000
-+++ xtables-addons-2.0/extensions/rtsp/nf_nat_rtsp.c	2012-12-20 00:29:32.311738640 +0000
-@@ -33,10 +33,10 @@
+Index: xtables-addons-2.1/extensions/rtsp/nf_nat_rtsp.c
+===================================================================
+--- xtables-addons-2.1.orig/extensions/rtsp/nf_nat_rtsp.c
++++ xtables-addons-2.1/extensions/rtsp/nf_nat_rtsp.c
+@@ -32,10 +32,10 @@
  
  #include <linux/module.h>
  #include <net/tcp.h>
@@ -61,7 +67,7 @@
  
  #include <linux/inet.h>
  #include <linux/ctype.h>
-@@ -105,8 +103,8 @@ get_skb_tcpdata(struct sk_buff* skb, cha
+@@ -100,8 +100,8 @@ get_skb_tcpdata(struct sk_buff* skb, cha
  static int
  rtsp_mangle_tran(enum ip_conntrack_info ctinfo,
                   struct nf_conntrack_expect* exp,
@@ -72,7 +78,7 @@
  {
      char*       ptcp;
      uint        tcplen;
-@@ -259,7 +257,7 @@ rtsp_mangle_tran(enum ip_conntrack_info
+@@ -254,7 +254,7 @@ rtsp_mangle_tran(enum ip_conntrack_info
                  if (dstact == DSTACT_STRIP || (dstact == DSTACT_AUTO && !is_stun))
                  {
                      diff = nextfieldoff-off;
@@ -81,7 +87,7 @@
                                                           off, diff, NULL, 0))
                      {
                          /* mangle failed, all we can do is bail */
-@@ -329,7 +327,7 @@ rtsp_mangle_tran(enum ip_conntrack_info
+@@ -324,7 +324,7 @@ rtsp_mangle_tran(enum ip_conntrack_info
                       * parameter 4 below is offset from start of tcp data.
                       */
                      diff = origlen-rbuflen;
@@ -90,7 +96,7 @@
                                                origoff, origlen, rbuf, rbuflen))
                      {
                          /* mangle failed, all we can do is bail */
-@@ -354,7 +352,7 @@ rtsp_mangle_tran(enum ip_conntrack_info
+@@ -349,7 +349,7 @@ rtsp_mangle_tran(enum ip_conntrack_info
  }
  
  static uint
@@ -99,7 +105,7 @@
  	 unsigned int matchoff, unsigned int matchlen, struct ip_ct_rtsp_expect* prtspexp, 
  	 struct nf_conntrack_expect* exp)
  {
-@@ -392,7 +390,7 @@ help_out(struct sk_buff *skb, enum ip_co
+@@ -387,7 +387,7 @@ help_out(struct sk_buff *skb, enum ip_co
          {
              uint oldtcplen = tcplen;
  	    pr_debug("hdr: Transport\n");
@@ -108,7 +114,7 @@
              {
  		pr_debug("hdr: Transport mangle failed");
                  break;
-@@ -410,7 +408,7 @@ help_out(struct sk_buff *skb, enum ip_co
+@@ -405,7 +405,7 @@ help_out(struct sk_buff *skb, enum ip_co
  }
  
  static unsigned int
@@ -117,7 +123,7 @@
       unsigned int matchoff, unsigned int matchlen, struct ip_ct_rtsp_expect* prtspexp,
       struct nf_conntrack_expect* exp)
  {
-@@ -420,7 +418,7 @@ help(struct sk_buff *skb, enum ip_conntr
+@@ -415,7 +415,7 @@ help(struct sk_buff *skb, enum ip_conntr
      switch (dir)
      {
      case IP_CT_DIR_ORIGINAL:
@@ -126,7 +132,7 @@
          break;
      case IP_CT_DIR_REPLY:
  	pr_debug("unmangle ! %u\n", ctinfo);
-@@ -435,7 +433,7 @@ help(struct sk_buff *skb, enum ip_conntr
+@@ -430,7 +430,7 @@ help(struct sk_buff *skb, enum ip_conntr
  
  static void expected(struct nf_conn* ct, struct nf_conntrack_expect *exp)
  {
@@ -135,7 +141,7 @@
      u_int32_t newdstip, newsrcip, newip;
  
      struct nf_conn *master = ct->master;
-@@ -449,12 +447,13 @@ static void expected(struct nf_conn* ct,
+@@ -444,12 +444,13 @@ static void expected(struct nf_conn* ct,
      pr_debug("newsrcip=%pI4, newdstip=%pI4, newip=%pI4\n",
             &newsrcip, &newdstip, &newip);
  

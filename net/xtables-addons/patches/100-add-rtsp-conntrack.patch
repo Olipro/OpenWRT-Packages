@@ -1,12 +1,16 @@
+Index: xtables-addons-2.1/extensions/rtsp/Kbuild
+===================================================================
 --- /dev/null
-+++ b/extensions/rtsp/Kbuild
++++ xtables-addons-2.1/extensions/rtsp/Kbuild
 @@ -0,0 +1,4 @@
 +# -*- Makefile -*-
 +
 +obj-m += nf_nat_rtsp.o
 +obj-m += nf_conntrack_rtsp.o
+Index: xtables-addons-2.1/extensions/rtsp/netfilter_helpers.h
+===================================================================
 --- /dev/null
-+++ b/extensions/rtsp/netfilter_helpers.h
++++ xtables-addons-2.1/extensions/rtsp/netfilter_helpers.h
 @@ -0,0 +1,133 @@
 +/*
 + * Helpers for netfiler modules.  This file provides implementations for basic
@@ -141,8 +145,10 @@
 +#endif /* __KERNEL__ */
 +
 +#endif /* _NETFILTER_HELPERS_H */
+Index: xtables-addons-2.1/extensions/rtsp/netfilter_mime.h
+===================================================================
 --- /dev/null
-+++ b/extensions/rtsp/netfilter_mime.h
++++ xtables-addons-2.1/extensions/rtsp/netfilter_mime.h
 @@ -0,0 +1,89 @@
 +/*
 + * MIME functions for netfilter modules.  This file provides implementations
@@ -233,8 +239,10 @@
 +#endif /* __KERNEL__ */
 +
 +#endif /* _NETFILTER_MIME_H */
+Index: xtables-addons-2.1/extensions/rtsp/nf_conntrack_rtsp.c
+===================================================================
 --- /dev/null
-+++ b/extensions/rtsp/nf_conntrack_rtsp.c
++++ xtables-addons-2.1/extensions/rtsp/nf_conntrack_rtsp.c
 @@ -0,0 +1,519 @@
 +/*
 + * RTSP extension for IP connection tracking
@@ -734,7 +742,7 @@
 +		} else {
 +			sprintf(tmpname, "rtsp-%d", i);
 +		}
-+		hlpr->name = tmpname;
++		strncpy(hlpr->name, tmpname, sizeof(hlpr->name));
 +
 +		pr_debug("port #%d: %d\n", i, ports[i]);
 +
@@ -755,8 +763,10 @@
 +
 +EXPORT_SYMBOL(nf_nat_rtsp_hook_expectfn);
 +
+Index: xtables-addons-2.1/extensions/rtsp/nf_conntrack_rtsp.h
+===================================================================
 --- /dev/null
-+++ b/extensions/rtsp/nf_conntrack_rtsp.h
++++ xtables-addons-2.1/extensions/rtsp/nf_conntrack_rtsp.h
 @@ -0,0 +1,63 @@
 +/*
 + * RTSP extension for IP connection tracking.
@@ -821,9 +831,11 @@
 +#endif /* __KERNEL__ */
 +
 +#endif /* _IP_CONNTRACK_RTSP_H */
+Index: xtables-addons-2.1/extensions/rtsp/nf_nat_rtsp.c
+===================================================================
 --- /dev/null
-+++ b/extensions/rtsp/nf_nat_rtsp.c
-@@ -0,0 +1,491 @@
++++ xtables-addons-2.1/extensions/rtsp/nf_nat_rtsp.c
+@@ -0,0 +1,489 @@
 +/*
 + * RTSP extension for TCP NAT alteration
 + * (C) 2003 by Tom Marshall <tmarshall at real.com>
@@ -870,8 +882,6 @@
 +#include "netfilter_helpers.h"
 +#define NF_NEED_MIME_NEXTLINE
 +#include "netfilter_mime.h"
-+
-+#include "../compat_xtables.h"
 +
 +#define MAX_PORTS       8
 +#define DSTACT_AUTO     0
@@ -1266,7 +1276,7 @@
 +    newdstip = master->tuplehash[IP_CT_DIR_ORIGINAL].tuple.src.u3.ip;
 +    newsrcip = ct->tuplehash[IP_CT_DIR_ORIGINAL].tuple.src.u3.ip;
 +    //FIXME (how to port that ?)
-+    //code from 2.4 : newip = (HOOK2MANIP(hooknum) == NF_NAT_MANIP_SRC) ? newsrcip : newdstip;
++    //code from 2.4 : newip = (HOOK2MANIP(hooknum) == IP_NAT_MANIP_SRC) ? newsrcip : newdstip;
 +    newip = newdstip;
 +
 +    pr_debug("newsrcip=%pI4, newdstip=%pI4, newip=%pI4\n",
@@ -1315,9 +1325,11 @@
 +
 +module_init(init);
 +module_exit(fini);
---- a/extensions/Kbuild
-+++ b/extensions/Kbuild
-@@ -35,6 +35,7 @@ obj-${build_lscan}       += xt_lscan.o
+Index: xtables-addons-2.1/extensions/Kbuild
+===================================================================
+--- xtables-addons-2.1.orig/extensions/Kbuild
++++ xtables-addons-2.1/extensions/Kbuild
+@@ -33,6 +33,7 @@ obj-${build_lscan}       += xt_lscan.o
  obj-${build_pknock}      += pknock/
  obj-${build_psd}         += xt_psd.o
  obj-${build_quota2}      += xt_quota2.o
@@ -1325,9 +1337,11 @@
  
  -include ${M}/*.Kbuild
  -include ${M}/Kbuild.*
---- a/mconfig
-+++ b/mconfig
-@@ -26,3 +26,4 @@ build_lscan=m
+Index: xtables-addons-2.1/mconfig
+===================================================================
+--- xtables-addons-2.1.orig/mconfig
++++ xtables-addons-2.1/mconfig
+@@ -24,3 +24,4 @@ build_lscan=m
  build_pknock=m
  build_psd=m
  build_quota2=m

@@ -1,5 +1,7 @@
+Index: xtables-addons-2.1/extensions/LUA/byte_array.c
+===================================================================
 --- /dev/null
-+++ b/extensions/LUA/byte_array.c
++++ xtables-addons-2.1/extensions/LUA/byte_array.c
 @@ -0,0 +1,145 @@
 +/*
 + *	Copyright (C) 2010 University of Basel <http://cn.cs.unibas.ch/>
@@ -146,8 +148,10 @@
 +}
 +
 +
+Index: xtables-addons-2.1/extensions/LUA/controller.c
+===================================================================
 --- /dev/null
-+++ b/extensions/LUA/controller.c
++++ xtables-addons-2.1/extensions/LUA/controller.c
 @@ -0,0 +1,604 @@
 +/*
 + *	Copyright (C) 2010 University of Basel <http://cn.cs.unibas.ch/>
@@ -753,8 +757,10 @@
 +
 +
 +
+Index: xtables-addons-2.1/extensions/LUA/controller.h
+===================================================================
 --- /dev/null
-+++ b/extensions/LUA/controller.h
++++ xtables-addons-2.1/extensions/LUA/controller.h
 @@ -0,0 +1,264 @@
 +/*
 + *	Copyright (C) 2010 University of Basel <http://cn.cs.unibas.ch/>
@@ -1020,8 +1026,10 @@
 +
 +
 +#endif /* CONTROLLER_H_ */
+Index: xtables-addons-2.1/extensions/LUA/Kbuild
+===================================================================
 --- /dev/null
-+++ b/extensions/LUA/Kbuild
++++ xtables-addons-2.1/extensions/LUA/Kbuild
 @@ -0,0 +1,49 @@
 +# -*- Makefile -*-
 +
@@ -1072,8 +1080,10 @@
 +			lua/lvm.o \
 +			lua/lzio.o \
 +			lua/lauxlib.o \
+Index: xtables-addons-2.1/extensions/LUA/libxt_LUA.c
+===================================================================
 --- /dev/null
-+++ b/extensions/LUA/libxt_LUA.c
++++ xtables-addons-2.1/extensions/LUA/libxt_LUA.c
 @@ -0,0 +1,191 @@
 +/*
 + *	Copyright (C) 2010 University of Basel <http://cn.cs.unibas.ch/>
@@ -1266,12 +1276,16 @@
 +	xtables_register_target(&lua_tg_reg);
 +}
 +
+Index: xtables-addons-2.1/extensions/LUA/libxt_LUA.man
+===================================================================
 --- /dev/null
-+++ b/extensions/LUA/libxt_LUA.man
++++ xtables-addons-2.1/extensions/LUA/libxt_LUA.man
 @@ -0,0 +1 @@
 +Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+Index: xtables-addons-2.1/extensions/LUA/lua/include/ctype.h
+===================================================================
 --- /dev/null
-+++ b/extensions/LUA/lua/include/ctype.h
++++ xtables-addons-2.1/extensions/LUA/lua/include/ctype.h
 @@ -0,0 +1,11 @@
 +#include <linux/ctype.h>
 +#undef  isalnum
@@ -1284,20 +1298,26 @@
 +#define isdigit(c)      (((__ismask(c)&(_D)) != 0) && (c > 0))
 +#undef  isspace
 +#define isspace(c)      (((__ismask(c)&(_S)) != 0) && (c > 0))
+Index: xtables-addons-2.1/extensions/LUA/lua/include/errno.h
+===================================================================
 --- /dev/null
-+++ b/extensions/LUA/lua/include/errno.h
++++ xtables-addons-2.1/extensions/LUA/lua/include/errno.h
 @@ -0,0 +1 @@
 +#include <linux/errno.h>
+Index: xtables-addons-2.1/extensions/LUA/lua/include/locale.h
+===================================================================
 --- /dev/null
-+++ b/extensions/LUA/lua/include/locale.h
++++ xtables-addons-2.1/extensions/LUA/lua/include/locale.h
 @@ -0,0 +1,5 @@
 +struct lconv {
 +   char * decimal_point ;
 +} ;
 +
 +#define localeconv()		NULL
+Index: xtables-addons-2.1/extensions/LUA/lua/include/setjmp.h
+===================================================================
 --- /dev/null
-+++ b/extensions/LUA/lua/include/setjmp.h
++++ xtables-addons-2.1/extensions/LUA/lua/include/setjmp.h
 @@ -0,0 +1,26 @@
 +/*
 + * arch/um/include/sysdep-i386/archsetjmp.h
@@ -1325,12 +1345,16 @@
 +
 +#endif				/* _SETJMP_H */
 +
+Index: xtables-addons-2.1/extensions/LUA/lua/include/stdio.h
+===================================================================
 --- /dev/null
-+++ b/extensions/LUA/lua/include/stdio.h
++++ xtables-addons-2.1/extensions/LUA/lua/include/stdio.h
 @@ -0,0 +1 @@
 +#include <linux/kernel.h>
+Index: xtables-addons-2.1/extensions/LUA/lua/include/stdlib.h
+===================================================================
 --- /dev/null
-+++ b/extensions/LUA/lua/include/stdlib.h
++++ xtables-addons-2.1/extensions/LUA/lua/include/stdlib.h
 @@ -0,0 +1,7 @@
 +#include <linux/kernel.h>
 +
@@ -1339,12 +1363,16 @@
 +#define strcoll		strcmp
 +
 +#define CHAR_BIT 8
+Index: xtables-addons-2.1/extensions/LUA/lua/include/string.h
+===================================================================
 --- /dev/null
-+++ b/extensions/LUA/lua/include/string.h
++++ xtables-addons-2.1/extensions/LUA/lua/include/string.h
 @@ -0,0 +1 @@
 +#include <linux/string.h>
+Index: xtables-addons-2.1/extensions/LUA/lua/lapi.c
+===================================================================
 --- /dev/null
-+++ b/extensions/LUA/lua/lapi.c
++++ xtables-addons-2.1/extensions/LUA/lua/lapi.c
 @@ -0,0 +1,1086 @@
 +/*
 +** $Id: lapi.c,v 2.55.1.5 2008/07/04 18:41:18 roberto Exp $
@@ -2432,8 +2460,10 @@
 +  return name;
 +}
 +
+Index: xtables-addons-2.1/extensions/LUA/lua/lapi.h
+===================================================================
 --- /dev/null
-+++ b/extensions/LUA/lua/lapi.h
++++ xtables-addons-2.1/extensions/LUA/lua/lapi.h
 @@ -0,0 +1,16 @@
 +/*
 +** $Id: lapi.h,v 2.2.1.1 2007/12/27 13:02:25 roberto Exp $
@@ -2451,8 +2481,10 @@
 +LUAI_FUNC void luaA_pushobject (lua_State *L, const TValue *o);
 +
 +#endif
+Index: xtables-addons-2.1/extensions/LUA/lua/lauxlib.c
+===================================================================
 --- /dev/null
-+++ b/extensions/LUA/lua/lauxlib.c
++++ xtables-addons-2.1/extensions/LUA/lua/lauxlib.c
 @@ -0,0 +1,674 @@
 +/*
 +** $Id: lauxlib.c,v 1.159.1.3 2008/01/21 13:20:51 roberto Exp $
@@ -3128,8 +3160,10 @@
 +  return L;
 +}
 +
+Index: xtables-addons-2.1/extensions/LUA/lua/lauxlib.h
+===================================================================
 --- /dev/null
-+++ b/extensions/LUA/lua/lauxlib.h
++++ xtables-addons-2.1/extensions/LUA/lua/lauxlib.h
 @@ -0,0 +1,184 @@
 +/*
 +** $Id: lauxlib.h,v 1.88.1.1 2007/12/27 13:02:25 roberto Exp $
@@ -3315,8 +3349,10 @@
 +#endif
 +
 +
+Index: xtables-addons-2.1/extensions/LUA/lua/lbaselib.c
+===================================================================
 --- /dev/null
-+++ b/extensions/LUA/lua/lbaselib.c
++++ xtables-addons-2.1/extensions/LUA/lua/lbaselib.c
 @@ -0,0 +1,647 @@
 +/*
 +** $Id: lbaselib.c,v 1.191.1.6 2008/02/14 16:46:22 roberto Exp $
@@ -3965,8 +4001,10 @@
 +  luaL_register(L, LUA_COLIBNAME, co_funcs);
 +  return 2;
 +}
+Index: xtables-addons-2.1/extensions/LUA/lua/lcode.c
+===================================================================
 --- /dev/null
-+++ b/extensions/LUA/lua/lcode.c
++++ xtables-addons-2.1/extensions/LUA/lua/lcode.c
 @@ -0,0 +1,838 @@
 +/*
 +** $Id: lcode.c,v 2.25.1.3 2007/12/28 15:32:23 roberto Exp $
@@ -4806,8 +4844,10 @@
 +  fs->freereg = base + 1;  /* free registers with list values */
 +}
 +
+Index: xtables-addons-2.1/extensions/LUA/lua/lcode.h
+===================================================================
 --- /dev/null
-+++ b/extensions/LUA/lua/lcode.h
++++ xtables-addons-2.1/extensions/LUA/lua/lcode.h
 @@ -0,0 +1,76 @@
 +/*
 +** $Id: lcode.h,v 1.48.1.1 2007/12/27 13:02:25 roberto Exp $
@@ -4885,8 +4925,10 @@
 +
 +
 +#endif
+Index: xtables-addons-2.1/extensions/LUA/lua/ldebug.c
+===================================================================
 --- /dev/null
-+++ b/extensions/LUA/lua/ldebug.c
++++ xtables-addons-2.1/extensions/LUA/lua/ldebug.c
 @@ -0,0 +1,637 @@
 +/*
 +** $Id: ldebug.c,v 2.29.1.6 2008/05/08 16:56:26 roberto Exp $
@@ -5525,8 +5567,10 @@
 +  luaG_errormsg(L);
 +}
 +
+Index: xtables-addons-2.1/extensions/LUA/lua/ldebug.h
+===================================================================
 --- /dev/null
-+++ b/extensions/LUA/lua/ldebug.h
++++ xtables-addons-2.1/extensions/LUA/lua/ldebug.h
 @@ -0,0 +1,33 @@
 +/*
 +** $Id: ldebug.h,v 2.3.1.1 2007/12/27 13:02:25 roberto Exp $
@@ -5561,8 +5605,10 @@
 +LUAI_FUNC int luaG_checkopenop (Instruction i);
 +
 +#endif
+Index: xtables-addons-2.1/extensions/LUA/lua/ldo.c
+===================================================================
 --- /dev/null
-+++ b/extensions/LUA/lua/ldo.c
++++ xtables-addons-2.1/extensions/LUA/lua/ldo.c
 @@ -0,0 +1,515 @@
 +/*
 +** $Id: ldo.c,v 2.38.1.3 2008/01/18 22:31:22 roberto Exp $
@@ -6079,8 +6125,10 @@
 +  return status;
 +}
 +
+Index: xtables-addons-2.1/extensions/LUA/lua/ldo.h
+===================================================================
 --- /dev/null
-+++ b/extensions/LUA/lua/ldo.h
++++ xtables-addons-2.1/extensions/LUA/lua/ldo.h
 @@ -0,0 +1,57 @@
 +/*
 +** $Id: ldo.h,v 2.7.1.1 2007/12/27 13:02:25 roberto Exp $
@@ -6139,8 +6187,10 @@
 +
 +#endif
 +
+Index: xtables-addons-2.1/extensions/LUA/lua/ldump.c
+===================================================================
 --- /dev/null
-+++ b/extensions/LUA/lua/ldump.c
++++ xtables-addons-2.1/extensions/LUA/lua/ldump.c
 @@ -0,0 +1,164 @@
 +/*
 +** $Id: ldump.c,v 2.8.1.1 2007/12/27 13:02:25 roberto Exp $
@@ -6306,8 +6356,10 @@
 + DumpFunction(f,NULL,&D);
 + return D.status;
 +}
+Index: xtables-addons-2.1/extensions/LUA/lua/lfunc.c
+===================================================================
 --- /dev/null
-+++ b/extensions/LUA/lua/lfunc.c
++++ xtables-addons-2.1/extensions/LUA/lua/lfunc.c
 @@ -0,0 +1,174 @@
 +/*
 +** $Id: lfunc.c,v 2.12.1.2 2007/12/28 14:58:43 roberto Exp $
@@ -6483,8 +6535,10 @@
 +  return NULL;  /* not found */
 +}
 +
+Index: xtables-addons-2.1/extensions/LUA/lua/lfunc.h
+===================================================================
 --- /dev/null
-+++ b/extensions/LUA/lua/lfunc.h
++++ xtables-addons-2.1/extensions/LUA/lua/lfunc.h
 @@ -0,0 +1,34 @@
 +/*
 +** $Id: lfunc.h,v 2.4.1.1 2007/12/27 13:02:25 roberto Exp $
@@ -6520,8 +6574,10 @@
 +
 +
 +#endif
+Index: xtables-addons-2.1/extensions/LUA/lua/lgc.c
+===================================================================
 --- /dev/null
-+++ b/extensions/LUA/lua/lgc.c
++++ xtables-addons-2.1/extensions/LUA/lua/lgc.c
 @@ -0,0 +1,711 @@
 +/*
 +** $Id: lgc.c,v 2.38.1.1 2007/12/27 13:02:25 roberto Exp $
@@ -7234,8 +7290,10 @@
 +  }
 +}
 +
+Index: xtables-addons-2.1/extensions/LUA/lua/lgc.h
+===================================================================
 --- /dev/null
-+++ b/extensions/LUA/lua/lgc.h
++++ xtables-addons-2.1/extensions/LUA/lua/lgc.h
 @@ -0,0 +1,110 @@
 +/*
 +** $Id: lgc.h,v 2.15.1.1 2007/12/27 13:02:25 roberto Exp $
@@ -7347,8 +7405,10 @@
 +
 +
 +#endif
+Index: xtables-addons-2.1/extensions/LUA/lua/llex.c
+===================================================================
 --- /dev/null
-+++ b/extensions/LUA/lua/llex.c
++++ xtables-addons-2.1/extensions/LUA/lua/llex.c
 @@ -0,0 +1,460 @@
 +/*
 +** $Id: llex.c,v 2.20.1.1 2007/12/27 13:02:25 roberto Exp $
@@ -7810,8 +7870,10 @@
 +  ls->lookahead.token = llex(ls, &ls->lookahead.seminfo);
 +}
 +
+Index: xtables-addons-2.1/extensions/LUA/lua/llex.h
+===================================================================
 --- /dev/null
-+++ b/extensions/LUA/lua/llex.h
++++ xtables-addons-2.1/extensions/LUA/lua/llex.h
 @@ -0,0 +1,81 @@
 +/*
 +** $Id: llex.h,v 1.58.1.1 2007/12/27 13:02:25 roberto Exp $
@@ -7894,8 +7956,10 @@
 +
 +
 +#endif
+Index: xtables-addons-2.1/extensions/LUA/lua/llimits.h
+===================================================================
 --- /dev/null
-+++ b/extensions/LUA/lua/llimits.h
++++ xtables-addons-2.1/extensions/LUA/lua/llimits.h
 @@ -0,0 +1,125 @@
 +/*
 +** $Id: llimits.h,v 1.69.1.1 2007/12/27 13:02:25 roberto Exp $
@@ -8022,8 +8086,10 @@
 +#endif
 +
 +#endif
+Index: xtables-addons-2.1/extensions/LUA/lua/lmem.c
+===================================================================
 --- /dev/null
-+++ b/extensions/LUA/lua/lmem.c
++++ xtables-addons-2.1/extensions/LUA/lua/lmem.c
 @@ -0,0 +1,86 @@
 +/*
 +** $Id: lmem.c,v 1.70.1.1 2007/12/27 13:02:25 roberto Exp $
@@ -8111,8 +8177,10 @@
 +  return block;
 +}
 +
+Index: xtables-addons-2.1/extensions/LUA/lua/lmem.h
+===================================================================
 --- /dev/null
-+++ b/extensions/LUA/lua/lmem.h
++++ xtables-addons-2.1/extensions/LUA/lua/lmem.h
 @@ -0,0 +1,49 @@
 +/*
 +** $Id: lmem.h,v 1.31.1.1 2007/12/27 13:02:25 roberto Exp $
@@ -8163,8 +8231,10 @@
 +
 +#endif
 +
+Index: xtables-addons-2.1/extensions/LUA/lua/lobject.c
+===================================================================
 --- /dev/null
-+++ b/extensions/LUA/lua/lobject.c
++++ xtables-addons-2.1/extensions/LUA/lua/lobject.c
 @@ -0,0 +1,215 @@
 +/*
 +** $Id: lobject.c,v 2.22.1.1 2007/12/27 13:02:25 roberto Exp $
@@ -8381,8 +8451,10 @@
 +    }
 +  }
 +}
+Index: xtables-addons-2.1/extensions/LUA/lua/lobject.h
+===================================================================
 --- /dev/null
-+++ b/extensions/LUA/lua/lobject.h
++++ xtables-addons-2.1/extensions/LUA/lua/lobject.h
 @@ -0,0 +1,381 @@
 +/*
 +** $Id: lobject.h,v 2.20.1.2 2008/08/06 13:29:48 roberto Exp $
@@ -8765,8 +8837,10 @@
 +
 +#endif
 +
+Index: xtables-addons-2.1/extensions/LUA/lua/lopcodes.c
+===================================================================
 --- /dev/null
-+++ b/extensions/LUA/lua/lopcodes.c
++++ xtables-addons-2.1/extensions/LUA/lua/lopcodes.c
 @@ -0,0 +1,102 @@
 +/*
 +** $Id: lopcodes.c,v 1.37.1.1 2007/12/27 13:02:25 roberto Exp $
@@ -8870,8 +8944,10 @@
 + ,opmode(0, 1, OpArgU, OpArgN, iABC)		/* OP_VARARG */
 +};
 +
+Index: xtables-addons-2.1/extensions/LUA/lua/lopcodes.h
+===================================================================
 --- /dev/null
-+++ b/extensions/LUA/lua/lopcodes.h
++++ xtables-addons-2.1/extensions/LUA/lua/lopcodes.h
 @@ -0,0 +1,268 @@
 +/*
 +** $Id: lopcodes.h,v 1.125.1.1 2007/12/27 13:02:25 roberto Exp $
@@ -9141,8 +9217,10 @@
 +
 +
 +#endif
+Index: xtables-addons-2.1/extensions/LUA/lua/lparser.c
+===================================================================
 --- /dev/null
-+++ b/extensions/LUA/lua/lparser.c
++++ xtables-addons-2.1/extensions/LUA/lua/lparser.c
 @@ -0,0 +1,1339 @@
 +/*
 +** $Id: lparser.c,v 2.42.1.3 2007/12/28 15:32:23 roberto Exp $
@@ -10483,8 +10561,10 @@
 +}
 +
 +/* }====================================================================== */
+Index: xtables-addons-2.1/extensions/LUA/lua/lparser.h
+===================================================================
 --- /dev/null
-+++ b/extensions/LUA/lua/lparser.h
++++ xtables-addons-2.1/extensions/LUA/lua/lparser.h
 @@ -0,0 +1,82 @@
 +/*
 +** $Id: lparser.h,v 1.57.1.1 2007/12/27 13:02:25 roberto Exp $
@@ -10568,8 +10648,10 @@
 +
 +
 +#endif
+Index: xtables-addons-2.1/extensions/LUA/lua/lstate.c
+===================================================================
 --- /dev/null
-+++ b/extensions/LUA/lua/lstate.c
++++ xtables-addons-2.1/extensions/LUA/lua/lstate.c
 @@ -0,0 +1,214 @@
 +/*
 +** $Id: lstate.c,v 2.36.1.2 2008/01/03 15:20:39 roberto Exp $
@@ -10785,8 +10867,10 @@
 +  close_state(L);
 +}
 +
+Index: xtables-addons-2.1/extensions/LUA/lua/lstate.h
+===================================================================
 --- /dev/null
-+++ b/extensions/LUA/lua/lstate.h
++++ xtables-addons-2.1/extensions/LUA/lua/lstate.h
 @@ -0,0 +1,169 @@
 +/*
 +** $Id: lstate.h,v 2.24.1.2 2008/01/03 15:20:39 roberto Exp $
@@ -10957,8 +11041,10 @@
 +
 +#endif
 +
+Index: xtables-addons-2.1/extensions/LUA/lua/lstring.c
+===================================================================
 --- /dev/null
-+++ b/extensions/LUA/lua/lstring.c
++++ xtables-addons-2.1/extensions/LUA/lua/lstring.c
 @@ -0,0 +1,110 @@
 +/*
 +** $Id: lstring.c,v 2.8.1.1 2007/12/27 13:02:25 roberto Exp $
@@ -11070,8 +11156,10 @@
 +  return u;
 +}
 +
+Index: xtables-addons-2.1/extensions/LUA/lua/lstring.h
+===================================================================
 --- /dev/null
-+++ b/extensions/LUA/lua/lstring.h
++++ xtables-addons-2.1/extensions/LUA/lua/lstring.h
 @@ -0,0 +1,31 @@
 +/*
 +** $Id: lstring.h,v 1.43.1.1 2007/12/27 13:02:25 roberto Exp $
@@ -11104,8 +11192,10 @@
 +
 +
 +#endif
+Index: xtables-addons-2.1/extensions/LUA/lua/lstrlib.c
+===================================================================
 --- /dev/null
-+++ b/extensions/LUA/lua/lstrlib.c
++++ xtables-addons-2.1/extensions/LUA/lua/lstrlib.c
 @@ -0,0 +1,883 @@
 +/*
 +** $Id: lstrlib.c,v 1.132.1.4 2008/07/11 17:27:21 roberto Exp $
@@ -11990,8 +12080,10 @@
 +  createmetatable(L);
 +  return 1;
 +}
+Index: xtables-addons-2.1/extensions/LUA/lua/ltable.c
+===================================================================
 --- /dev/null
-+++ b/extensions/LUA/lua/ltable.c
++++ xtables-addons-2.1/extensions/LUA/lua/ltable.c
 @@ -0,0 +1,588 @@
 +/*
 +** $Id: ltable.c,v 2.32.1.2 2007/12/28 15:32:23 roberto Exp $
@@ -12581,8 +12673,10 @@
 +int luaH_isdummy (Node *n) { return n == dummynode; }
 +
 +#endif
+Index: xtables-addons-2.1/extensions/LUA/lua/ltable.h
+===================================================================
 --- /dev/null
-+++ b/extensions/LUA/lua/ltable.h
++++ xtables-addons-2.1/extensions/LUA/lua/ltable.h
 @@ -0,0 +1,40 @@
 +/*
 +** $Id: ltable.h,v 2.10.1.1 2007/12/27 13:02:25 roberto Exp $
@@ -12624,8 +12718,10 @@
 +
 +
 +#endif
+Index: xtables-addons-2.1/extensions/LUA/lua/ltablib.c
+===================================================================
 --- /dev/null
-+++ b/extensions/LUA/lua/ltablib.c
++++ xtables-addons-2.1/extensions/LUA/lua/ltablib.c
 @@ -0,0 +1,288 @@
 +/*
 +** $Id: ltablib.c,v 1.38.1.3 2008/02/14 16:46:58 roberto Exp $
@@ -12915,8 +13011,10 @@
 +  luaL_register(L, LUA_TABLIBNAME, tab_funcs);
 +  return 1;
 +}
+Index: xtables-addons-2.1/extensions/LUA/lua/ltm.c
+===================================================================
 --- /dev/null
-+++ b/extensions/LUA/lua/ltm.c
++++ xtables-addons-2.1/extensions/LUA/lua/ltm.c
 @@ -0,0 +1,74 @@
 +/*
 +** $Id: ltm.c,v 2.8.1.1 2007/12/27 13:02:25 roberto Exp $
@@ -12992,8 +13090,10 @@
 +  return (mt ? luaH_getstr(mt, G(L)->tmname[event]) : luaO_nilobject);
 +}
 +
+Index: xtables-addons-2.1/extensions/LUA/lua/ltm.h
+===================================================================
 --- /dev/null
-+++ b/extensions/LUA/lua/ltm.h
++++ xtables-addons-2.1/extensions/LUA/lua/ltm.h
 @@ -0,0 +1,54 @@
 +/*
 +** $Id: ltm.h,v 2.6.1.1 2007/12/27 13:02:25 roberto Exp $
@@ -13049,8 +13149,10 @@
 +LUAI_FUNC void luaT_init (lua_State *L);
 +
 +#endif
+Index: xtables-addons-2.1/extensions/LUA/lua/luaconf.h
+===================================================================
 --- /dev/null
-+++ b/extensions/LUA/lua/luaconf.h
++++ xtables-addons-2.1/extensions/LUA/lua/luaconf.h
 @@ -0,0 +1,797 @@
 +/*
 +** $Id: luaconf.h,v 1.82.1.7 2008/02/11 16:25:08 roberto Exp $
@@ -13849,8 +13951,10 @@
 +
 +#endif
 +
+Index: xtables-addons-2.1/extensions/LUA/lua/lua.h
+===================================================================
 --- /dev/null
-+++ b/extensions/LUA/lua/lua.h
++++ xtables-addons-2.1/extensions/LUA/lua/lua.h
 @@ -0,0 +1,387 @@
 +/*
 +** $Id: lua.h,v 1.218.1.5 2008/08/06 13:30:12 roberto Exp $
@@ -14239,8 +14343,10 @@
 +
 +
 +#endif
+Index: xtables-addons-2.1/extensions/LUA/lua/lualib.h
+===================================================================
 --- /dev/null
-+++ b/extensions/LUA/lua/lualib.h
++++ xtables-addons-2.1/extensions/LUA/lua/lualib.h
 @@ -0,0 +1,55 @@
 +/*
 +** $Id: lualib.h,v 1.36.1.1 2007/12/27 13:02:25 roberto Exp $
@@ -14297,8 +14403,10 @@
 +
 +
 +#endif
+Index: xtables-addons-2.1/extensions/LUA/lua/lundump.c
+===================================================================
 --- /dev/null
-+++ b/extensions/LUA/lua/lundump.c
++++ xtables-addons-2.1/extensions/LUA/lua/lundump.c
 @@ -0,0 +1,227 @@
 +/*
 +** $Id: lundump.c,v 2.7.1.4 2008/04/04 19:51:41 roberto Exp $
@@ -14527,8 +14635,10 @@
 + *h++=(char)sizeof(lua_Number);
 + *h++=(char)(((lua_Number)0.5)==0);		/* is lua_Number integral? */
 +}
+Index: xtables-addons-2.1/extensions/LUA/lua/lundump.h
+===================================================================
 --- /dev/null
-+++ b/extensions/LUA/lua/lundump.h
++++ xtables-addons-2.1/extensions/LUA/lua/lundump.h
 @@ -0,0 +1,36 @@
 +/*
 +** $Id: lundump.h,v 1.37.1.1 2007/12/27 13:02:25 roberto Exp $
@@ -14566,8 +14676,10 @@
 +#define LUAC_HEADERSIZE		12
 +
 +#endif
+Index: xtables-addons-2.1/extensions/LUA/lua/lvm.c
+===================================================================
 --- /dev/null
-+++ b/extensions/LUA/lua/lvm.c
++++ xtables-addons-2.1/extensions/LUA/lua/lvm.c
 @@ -0,0 +1,762 @@
 +/*
 +** $Id: lvm.c,v 2.63.1.3 2007/12/28 15:32:23 roberto Exp $
@@ -15331,8 +15443,10 @@
 +  }
 +}
 +
+Index: xtables-addons-2.1/extensions/LUA/lua/lvm.h
+===================================================================
 --- /dev/null
-+++ b/extensions/LUA/lua/lvm.h
++++ xtables-addons-2.1/extensions/LUA/lua/lvm.h
 @@ -0,0 +1,36 @@
 +/*
 +** $Id: lvm.h,v 2.5.1.1 2007/12/27 13:02:25 roberto Exp $
@@ -15370,8 +15484,10 @@
 +LUAI_FUNC void luaV_concat (lua_State *L, int total, int last);
 +
 +#endif
+Index: xtables-addons-2.1/extensions/LUA/lua/lzio.c
+===================================================================
 --- /dev/null
-+++ b/extensions/LUA/lua/lzio.c
++++ xtables-addons-2.1/extensions/LUA/lua/lzio.c
 @@ -0,0 +1,81 @@
 +/*
 +** $Id: lzio.c,v 1.31.1.1 2007/12/27 13:02:25 roberto Exp $
@@ -15454,8 +15570,10 @@
 +}
 +
 +
+Index: xtables-addons-2.1/extensions/LUA/lua/lzio.h
+===================================================================
 --- /dev/null
-+++ b/extensions/LUA/lua/lzio.h
++++ xtables-addons-2.1/extensions/LUA/lua/lzio.h
 @@ -0,0 +1,67 @@
 +/*
 +** $Id: lzio.h,v 1.21.1.1 2007/12/27 13:02:25 roberto Exp $
@@ -15524,8 +15642,10 @@
 +LUAI_FUNC int luaZ_fill (ZIO *z);
 +
 +#endif
+Index: xtables-addons-2.1/extensions/LUA/Makefile
+===================================================================
 --- /dev/null
-+++ b/extensions/LUA/Makefile
++++ xtables-addons-2.1/extensions/LUA/Makefile
 @@ -0,0 +1,389 @@
 +# Makefile.in generated by automake 1.11.1 from Makefile.am.
 +# extensions/LUA/Makefile.  Generated from Makefile.in by configure.
@@ -15916,12 +16036,16 @@
 +# Otherwise a system limit (for SysV at least) may be exceeded.
 +.NOEXPORT:
 +
+Index: xtables-addons-2.1/extensions/LUA/Makefile.am
+===================================================================
 --- /dev/null
-+++ b/extensions/LUA/Makefile.am
++++ xtables-addons-2.1/extensions/LUA/Makefile.am
 @@ -0,0 +1 @@
 +include ../../Makefile.extra
+Index: xtables-addons-2.1/extensions/LUA/Makefile.in
+===================================================================
 --- /dev/null
-+++ b/extensions/LUA/Makefile.in
++++ xtables-addons-2.1/extensions/LUA/Makefile.in
 @@ -0,0 +1,389 @@
 +# Makefile.in generated by automake 1.11.1 from Makefile.am.
 +# @configure_input@
@@ -16312,14 +16436,18 @@
 +# Otherwise a system limit (for SysV at least) may be exceeded.
 +.NOEXPORT:
 +
+Index: xtables-addons-2.1/extensions/LUA/Mbuild
+===================================================================
 --- /dev/null
-+++ b/extensions/LUA/Mbuild
++++ xtables-addons-2.1/extensions/LUA/Mbuild
 @@ -0,0 +1,3 @@
 +# -*- Makefile -*-
 +
 +obj-${build_LUA}     += libxt_LUA.so
+Index: xtables-addons-2.1/extensions/LUA/nf_lua.c
+===================================================================
 --- /dev/null
-+++ b/extensions/LUA/nf_lua.c
++++ xtables-addons-2.1/extensions/LUA/nf_lua.c
 @@ -0,0 +1,64 @@
 +#if defined(__KERNEL__)
 +
@@ -16385,8 +16513,10 @@
 +}
 +
 +#endif
+Index: xtables-addons-2.1/extensions/LUA/prot_buf_dynamic.c
+===================================================================
 --- /dev/null
-+++ b/extensions/LUA/prot_buf_dynamic.c
++++ xtables-addons-2.1/extensions/LUA/prot_buf_dynamic.c
 @@ -0,0 +1,486 @@
 +/*
 + *	Copyright (C) 2010 University of Basel <http://cn.cs.unibas.ch/>
@@ -16874,8 +17004,10 @@
 +	lua_pop(L, 1); /* pop _G */
 +	return;
 +}
+Index: xtables-addons-2.1/extensions/LUA/prot_buf_ethernet.c
+===================================================================
 --- /dev/null
-+++ b/extensions/LUA/prot_buf_ethernet.c
++++ xtables-addons-2.1/extensions/LUA/prot_buf_ethernet.c
 @@ -0,0 +1,60 @@
 +/*
 + *	Copyright (C) 2010 University of Basel <http://cn.cs.unibas.ch/>
@@ -16937,8 +17069,10 @@
 +{
 +	register_protbuf(L, (struct protocol_buf *)&eth_protocol_buf, PACKET_ETH);
 +}
+Index: xtables-addons-2.1/extensions/LUA/prot_buf_helpers.c
+===================================================================
 --- /dev/null
-+++ b/extensions/LUA/prot_buf_helpers.c
++++ xtables-addons-2.1/extensions/LUA/prot_buf_helpers.c
 @@ -0,0 +1,216 @@
 +/*
 + *	Copyright (C) 2010 University of Basel <http://cn.cs.unibas.ch/>
@@ -17157,8 +17291,10 @@
 +	return NULL; /* only to omit warnings */
 +}
 \ No newline at end of file
+Index: xtables-addons-2.1/extensions/LUA/prot_buf_icmp.c
+===================================================================
 --- /dev/null
-+++ b/extensions/LUA/prot_buf_icmp.c
++++ xtables-addons-2.1/extensions/LUA/prot_buf_icmp.c
 @@ -0,0 +1,49 @@
 +/*
 + *	Copyright (C) 2010 University of Basel <http://cn.cs.unibas.ch/>
@@ -17209,8 +17345,10 @@
 +	register_protbuf(L, (struct protocol_buf *)&icmp_protocol_buf, PACKET_ICMP);
 +}
 +
+Index: xtables-addons-2.1/extensions/LUA/prot_buf_ip.c
+===================================================================
 --- /dev/null
-+++ b/extensions/LUA/prot_buf_ip.c
++++ xtables-addons-2.1/extensions/LUA/prot_buf_ip.c
 @@ -0,0 +1,209 @@
 +/*
 + *	Copyright (C) 2010 University of Basel <http://cn.cs.unibas.ch/>
@@ -17421,8 +17559,10 @@
 +	register_protbuf(L, (struct protocol_buf *)&ip_protocol_buf, PACKET_IP);
 +}
 +
+Index: xtables-addons-2.1/extensions/LUA/prot_buf_raw.c
+===================================================================
 --- /dev/null
-+++ b/extensions/LUA/prot_buf_raw.c
++++ xtables-addons-2.1/extensions/LUA/prot_buf_raw.c
 @@ -0,0 +1,43 @@
 +/*
 + *	Copyright (C) 2010 University of Basel <http://cn.cs.unibas.ch/>
@@ -17467,8 +17607,10 @@
 +{
 +	register_protbuf(L, (struct protocol_buf *)&raw_protocol_buf, PACKET_RAW);
 +}
+Index: xtables-addons-2.1/extensions/LUA/prot_buf_tcp.c
+===================================================================
 --- /dev/null
-+++ b/extensions/LUA/prot_buf_tcp.c
++++ xtables-addons-2.1/extensions/LUA/prot_buf_tcp.c
 @@ -0,0 +1,188 @@
 +/*
 + *	Copyright (C) 2010 University of Basel <http://cn.cs.unibas.ch/>
@@ -17658,8 +17800,10 @@
 +}
 +
 +
+Index: xtables-addons-2.1/extensions/LUA/prot_buf_tftp.c
+===================================================================
 --- /dev/null
-+++ b/extensions/LUA/prot_buf_tftp.c
++++ xtables-addons-2.1/extensions/LUA/prot_buf_tftp.c
 @@ -0,0 +1,87 @@
 +/*
 + *	Copyright (C) 2010 University of Basel <http://cn.cs.unibas.ch/>
@@ -17748,8 +17892,10 @@
 +{
 +	register_protbuf(L, (struct protocol_buf *)&tftp_protocol_buf, PACKET_TFTP);
 +}
+Index: xtables-addons-2.1/extensions/LUA/prot_buf_udp.c
+===================================================================
 --- /dev/null
-+++ b/extensions/LUA/prot_buf_udp.c
++++ xtables-addons-2.1/extensions/LUA/prot_buf_udp.c
 @@ -0,0 +1,53 @@
 +/*
 + *	Copyright (C) 2010 University of Basel <http://cn.cs.unibas.ch/>
@@ -17804,8 +17950,10 @@
 +{
 +	register_protbuf(L, (struct protocol_buf *)&udp_protocol_buf, PACKET_UDP);
 +}
+Index: xtables-addons-2.1/extensions/LUA/xt_LUA.h
+===================================================================
 --- /dev/null
-+++ b/extensions/LUA/xt_LUA.h
++++ xtables-addons-2.1/extensions/LUA/xt_LUA.h
 @@ -0,0 +1,36 @@
 +/*
 + *	Copyright (C) 2010 University of Basel <http://cn.cs.unibas.ch/>
@@ -17843,8 +17991,10 @@
 +};
 +
 +#endif /* XT_LUA_H_ */
+Index: xtables-addons-2.1/extensions/LUA/xt_LUA.mod.c
+===================================================================
 --- /dev/null
-+++ b/extensions/LUA/xt_LUA.mod.c
++++ xtables-addons-2.1/extensions/LUA/xt_LUA.mod.c
 @@ -0,0 +1,69 @@
 +#include <linux/module.h>
 +#include <linux/vermagic.h>
@@ -17915,8 +18065,10 @@
 +
 +
 +MODULE_INFO(srcversion, "33A1481C4AA71D1B5A8CA8A");
+Index: xtables-addons-2.1/extensions/LUA/xt_LUA_target.c
+===================================================================
 --- /dev/null
-+++ b/extensions/LUA/xt_LUA_target.c
++++ xtables-addons-2.1/extensions/LUA/xt_LUA_target.c
 @@ -0,0 +1,286 @@
 +/*
 + *	Copyright (C) 2010 University of Basel <http://cn.cs.unibas.ch/>
@@ -18204,9 +18356,11 @@
 +
 +
 +
---- a/extensions/Kbuild
-+++ b/extensions/Kbuild
-@@ -36,6 +36,7 @@ obj-${build_pknock}      += pknock/
+Index: xtables-addons-2.1/extensions/Kbuild
+===================================================================
+--- xtables-addons-2.1.orig/extensions/Kbuild
++++ xtables-addons-2.1/extensions/Kbuild
+@@ -34,6 +34,7 @@ obj-${build_pknock}      += pknock/
  obj-${build_psd}         += xt_psd.o
  obj-${build_quota2}      += xt_quota2.o
  obj-${build_rtsp}        += rtsp/
@@ -18214,16 +18368,20 @@
  
  -include ${M}/*.Kbuild
  -include ${M}/Kbuild.*
---- a/extensions/Mbuild
-+++ b/extensions/Mbuild
-@@ -26,3 +26,4 @@ obj-${build_pknock}      += pknock/
+Index: xtables-addons-2.1/extensions/Mbuild
+===================================================================
+--- xtables-addons-2.1.orig/extensions/Mbuild
++++ xtables-addons-2.1/extensions/Mbuild
+@@ -24,3 +24,4 @@ obj-${build_pknock}      += pknock/
  obj-${build_psd}         += libxt_psd.so
  obj-${build_quota2}      += libxt_quota2.so
  obj-${build_gradm}       += libxt_gradm.so
 +obj-${build_LUA}         += LUA/
---- a/mconfig
-+++ b/mconfig
-@@ -27,3 +27,4 @@ build_pknock=m
+Index: xtables-addons-2.1/mconfig
+===================================================================
+--- xtables-addons-2.1.orig/mconfig
++++ xtables-addons-2.1/mconfig
+@@ -25,3 +25,4 @@ build_pknock=m
  build_psd=m
  build_quota2=m
  build_rtsp=m
